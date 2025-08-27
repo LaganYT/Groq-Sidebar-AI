@@ -1,0 +1,150 @@
+/* AI Sidebar Trigger - Bottom Right Corner */
+.ai-sidebar-trigger {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 50%;
+    box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
+    cursor: pointer;
+    z-index: 999999;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    opacity: 0;
+    transform: scale(0.8);
+}
+
+.ai-sidebar-trigger:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 30px rgba(102, 126, 234, 0.6);
+    opacity: 1;
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Show on hover of the bottom-right corner area */
+.ai-sidebar-trigger.show-on-hover {
+    opacity: 0.8;
+    transform: scale(1);
+}
+
+.ai-sidebar-trigger:active {
+    transform: scale(0.95);
+}
+
+/* Pulse animation */
+.ai-sidebar-trigger::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    z-index: -1;
+    animation: pulse 2s infinite;
+    opacity: 0.3;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.3;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 0.1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0.3;
+    }
+}
+
+/* Tooltip */
+.ai-sidebar-trigger::after {
+    content: 'AI Assistant';
+    position: absolute;
+    right: 60px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.ai-sidebar-trigger:hover::after {
+    opacity: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .ai-sidebar-trigger {
+        bottom: 15px;
+        right: 15px;
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
+    }
+    
+    .ai-sidebar-trigger::after {
+        right: 55px;
+        font-size: 11px;
+        padding: 6px 10px;
+    }
+}
+
+/* Hover area for the bottom-right corner */
+.ai-sidebar-hover-area {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 100px;
+    height: 100px;
+    z-index: 999998;
+    pointer-events: auto;
+}
+
+/* Show trigger when hovering over the hover area */
+.ai-sidebar-hover-area:hover ~ .ai-sidebar-trigger {
+    opacity: 0.8 !important;
+    transform: scale(1) !important;
+}
+
+/* Keep trigger visible when hovering over it */
+.ai-sidebar-trigger:hover {
+    opacity: 1 !important;
+    transform: scale(1.1) !important;
+}
+
+/* Hide on certain pages if needed */
+.ai-sidebar-trigger.hidden {
+    display: none;
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+    .ai-sidebar-trigger {
+        box-shadow: 0 4px 20px rgba(102, 126, 234, 0.6);
+    }
+    
+    .ai-sidebar-trigger:hover {
+        box-shadow: 0 8px 30px rgba(102, 126, 234, 0.8);
+    }
+}
