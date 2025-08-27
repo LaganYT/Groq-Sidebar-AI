@@ -434,7 +434,6 @@ body {
     background: #e9ecef;
     border-radius: 3px;
     outline: none;
-    -webkit-appearance: none;
 }
 
 .setting-group input[type="range"]::-webkit-slider-thumb {
